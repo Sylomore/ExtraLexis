@@ -16,17 +16,17 @@ local missionCutOptions = {
 local missionCutEditor = root:submenu('Edit Cuts')
 local missionCutSel = missionCutEditor:combo_int('Select Mission', missionCutOptions, 0)
 
-local cutsMenus = missionCutEditor:submenu('Cuts')
+local cutsMenu = missionCutEditor:submenu('Cuts')
 
 local missionList = {}
 for i = 0, 300, 10 do
     table.insert(missionList, { i .. '%', i })
 end
 
-local cut_player1 = cutsMenus:combo_int('Player 1 Cut', missionList, 0)
-local cut_player2 = cutsMenus:combo_int('Player 2 Cut', missionList, 0)
-local cut_player3 = cutsMenus:combo_int('Player 3 Cut', missionList, 0)
-local cut_player4 = cutsMenus:combo_int('Player 4 Cut', missionList, 0)
+local cut_player1 = cutsMenu:combo_int('Player 1 Cut', missionList, 0)
+local cut_player2 = cutsMenu:combo_int('Player 2 Cut', missionList, 0)
+local cut_player3 = cutsMenu:combo_int('Player 3 Cut', missionList, 0)
+local cut_player4 = cutsMenu:combo_int('Player 4 Cut', missionList, 0)
 
 local function selected_cut_value(combo)
     return missionList[combo.value][2]
