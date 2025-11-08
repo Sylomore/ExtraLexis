@@ -63,7 +63,10 @@ local function editCuts(heist_type)
 end
 
 missionCutEditor:button('Modify Cuts'):event(0, function()
-    editCuts(missionCutOptions[missionCutSel.value][1])
+    util.create_thread(function(thread)
+        editCuts(missionCutOptions[missionCutSel.value][1])
+        thread:remove()
+    end)
 end)
 -- Cut Editor end
 
