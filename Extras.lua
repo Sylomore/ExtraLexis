@@ -3,7 +3,7 @@ local function printF(message)
     print(message)
 end
 
-local root = menu.player_root()
+local root = menu.root()
 
 -- Cut Editor start
 local missionCutOptions = {
