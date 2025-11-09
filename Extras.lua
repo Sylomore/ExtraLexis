@@ -19,7 +19,7 @@ local missionCutSel = missionCutEditor:combo_int('Select Mission', missionCutOpt
 local cutsMenu = missionCutEditor:submenu('Cuts')
 
 local missionList = {}
-for i = 0, 300, 10 do
+for i = 0, 300, 5 do
     table.insert(missionList, { i .. '%', i })
 end
 
