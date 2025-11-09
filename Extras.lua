@@ -5,37 +5,65 @@ end
 
 local root = menu.root()
 
+-- Heist Utilities start
 local bypassMenu = root:submenu('Heist Utilities')
 
-local diamondExtras = bypassMenu:submenu('Diamond Heist')
+-- Heist Utilities Diamond Heist start
 
-local diamondReloadTable = diamondExtras:button('Reload Table'):event(0, function()
+local diamondHeistUtilMenu = bypassMenu:submenu('Diamond Heist')
+
+local diamondReloadTable = diamondHeistUtilMenu:button('Reload Table'):event(0, function()
     script.locals(joaat("gb_casino_heist_planning"), 210).int32 = 2
 end)
 
-local diamondCrewCut = diamondExtras:button('Set Crew Cut to 1%'):event(0, function()
+local diamondCrewCut = diamondHeistUtilMenu:button('Set Crew Cut to 1%'):event(0, function()
     script.tunables(joaat("CH_LESTER_CUT")).int32 = 1
     script.tunables(joaat("HEIST3_PREPBOARD_GUNMEN_KARL_CUT")).int32 = 1
     script.tunables(joaat("HEIST3_DRIVERS_KARIM_CUT")).int32 = 1
     script.tunables(joaat("HEIST3_HACKERS_AVI_CUT")).int32 = 1
-    printF('Diamond Crew Cut set to 1% (Best Crew Only | Avi, Karim, Karl)')
+    printF('Diamond Crew Cut set to 1%')
 end)
 
-local diamondBypassFingerprint = diamondExtras:button('Bypass Fingerprint/Keypad Hack'):event(0, function()
-    if script.locals(joaat("fm_mission_controller"), 54037).int32 == 4 then
-        script.locals(joaat("fm_mission_controller"), 54037).int32 = 5
-        notify.push("Casino Heist", "Fingerprint hack bypassed.", 4000)
+local diamondBypassFingerprint = diamondHeistUtilMenu:button('Bypass Fingerprint/Keypad Hack'):event(0, function()
+    if script.locals("fm_mission_controller", 54037).int32 == 4 then
+        script.locals("fm_mission_controller", 54037).int32 = 5
+        printF("Fingerprint hack bypassed.")
     else
-        notify.push("Casino Heist", "Fingerprint hack is not active or already complete.", 4000)
+        printF("Fingerprint hack is not active.")
     end
 
-    if script.locals(joaat("fm_mission_controller"), 55103).int32 ~= 4 then
-        script.locals(joaat("fm_mission_controller"), 55103).int32 = 5
-        notify.push("Casino Heist", "Keypad hack bypassed.", 4000)
+    if script.locals("fm_mission_controller", 55103).int32 ~= 4 then
+        script.locals("fm_mission_controller", 55103).int32 = 5
+        printF("Keypad hack bypassed.")
     else
-        notify.push("Casino Heist", "Keypad hack is already complete.", 4000)
+        printF("Keypad hack is already complete.")
     end
 end)
+-- Heist Utilities Diamond Heist end
+
+-- Heist Utilities Cayo start
+
+local cayoPericoUtilMenu = bypassMenu:submenu('Cayo Perico')
+
+cayoPericoUtilMenu:button('Skip Plasma Cutter'):event(0, function()
+    script.locals("fm_mission_controller_2020", 31525 + 3).int32 = 100
+    printF("Skiped Plasma Cutter.")
+end)
+
+cayoPericoUtilMenu:button('Skip Fingerprint'):event(0, function()
+    script.locals("fm_mission_controller_2020", 25460).int32 = 5
+    printF("Skiped Fingerprint.")
+end)
+
+cayoPericoUtilMenu:button('Skip Drainage cutting'):event(0, function()
+    script.locals("fm_mission_controller_2020", 30285).int32 = 6
+    printF("Skiped Drainage cutting.")
+end)
+
+-- Heist Utilities Cayo end
+
+
+-- Heist Utilities end
 
 -- Cut Editor start
 local missionCutOptions = { { 'APARTMENT', 0 }, { 'DIAMOND', 1 }, { 'DOOMSDAY', 2 }, { 'CAYO', 3 } }
