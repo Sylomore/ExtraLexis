@@ -12,7 +12,7 @@ local bypassMenu = root:submenu('Heist Utilities')
 
 local diamondHeistUtilMenu = bypassMenu:submenu('Diamond Heist')
 
-local diamondReloadTable = diamondHeistUtilMenu:button('Reload Table'):event(0, function()
+diamondHeistUtilMenu:button('Reload Table'):event(0, function()
     script.locals(joaat("gb_casino_heist_planning"), 210).int32 = 2
 end)
 
@@ -24,7 +24,7 @@ local diamondCrewCut = diamondHeistUtilMenu:button('Set Crew Cut to 1%'):event(0
     printF('Diamond Crew Cut set to 1%')
 end)
 
-local diamondBypassFingerprint = diamondHeistUtilMenu:button('Bypass Fingerprint/Keypad Hack'):event(0, function()
+diamondHeistUtilMenu:button('Bypass Fingerprint/Keypad Hack'):event(0, function()
     if script.locals("fm_mission_controller", 54037).int32 == 4 then
         script.locals("fm_mission_controller", 54037).int32 = 5
         printF("Fingerprint hack bypassed.")
@@ -40,29 +40,6 @@ local diamondBypassFingerprint = diamondHeistUtilMenu:button('Bypass Fingerprint
     end
 end)
 -- Heist Utilities Diamond Heist end
-
--- Heist Utilities Cayo start
-
-local cayoPericoUtilMenu = bypassMenu:submenu('Cayo Perico')
-
-cayoPericoUtilMenu:button('Skip Plasma Cutter'):event(0, function()
-    script.locals("fm_mission_controller_2020", 31525 + 3).int32 = 100
-    printF("Skiped Plasma Cutter.")
-end)
-
-cayoPericoUtilMenu:button('Skip Fingerprint'):event(0, function()
-    script.locals("fm_mission_controller_2020", 25460).int32 = 5
-    printF("Skiped Fingerprint.")
-end)
-
-cayoPericoUtilMenu:button('Skip Drainage cutting'):event(0, function()
-    script.locals("fm_mission_controller_2020", 30285).int32 = 6
-    printF("Skiped Drainage cutting.")
-end)
-
--- Heist Utilities Cayo end
-
-
 -- Heist Utilities end
 
 -- Cut Editor start
