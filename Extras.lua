@@ -5,7 +5,9 @@ end
 
 local root = menu.root()
 
-local diamondExtras = root:submenu('Diamond Hacks')
+local bypassMenu = root:submenu('Heist Utilities')
+
+local diamondExtras = bypassMenu:submenu('Diamond Heist')
 
 local diamondReloadTable = diamondExtras:button('Reload Table'):event(0, function()
     script.locals(joaat("gb_casino_heist_planning"), 210).int32 = 2
